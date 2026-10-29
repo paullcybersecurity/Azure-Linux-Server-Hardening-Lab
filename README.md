@@ -4,7 +4,7 @@
 Hardening a university  public-facing Ubuntu server in Microsoft Azure using SSH key authentication, create a dedicated admin user, enable SSH configuration lockdown, host firewall, run automatic patching and a Lynis security audit.
 
 ![Cloud](https://img.shields.io/badge/Cloud-Azure-0078D4) ![OS](https://img.shields.io/badge/OS-Ubuntu%20Server-E95420) 
-
+![github](https://img.shields.io/badge/github-repo-blue?logo=github)
 ---
 
 ## Objective
