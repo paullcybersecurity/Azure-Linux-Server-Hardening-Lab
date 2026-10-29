@@ -62,7 +62,6 @@ chmod 600 ~/.ssh/****.pem
 ssh -i ~/.ssh/****.pem belta@20.11*.***.**
 ```
 
-
 ## Step 3: Update the system
 
 ```bash
@@ -70,6 +69,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 Cloud images can contain known vulnerabilities until patched, so this is done immediately after first login to patch the server
+![task running](sudoaptrunning.png)
 
 ## Step 4: Create a separate admin user (least privilege)
 
@@ -85,6 +85,7 @@ sudo chmod 600 /home/bursarydept/.ssh/authorized_keys
 ```
 
 Tested the new account from a **second terminal** while keeping the original session open, so a mistake could not lock me out.
+![bursarydept created](bursarydept.png)
 
 ## Step 5: Harden SSH
 
@@ -109,6 +110,7 @@ sudo ufw allow OpenSSH
 sudo ufw enable
 sudo ufw status verbose
 ```
+![ufw enabled](ufw-enabled.png)
 
 ## Step 7: Automatic security updates
 
@@ -130,6 +132,7 @@ ss -tulnp
 | Lynis hardening index | `65` / 100 |
 | Unexpected listening services | None |
 
+![lynis report](lynis-report.png)
 ---
 
 
@@ -143,13 +146,6 @@ ss -tulnp
 | unattended-upgrades | Patch management |
 | Lynis, `ss -tulnp`, log review | Continuous security assessment |
 
-## Key takeaways
-
-- A new cloud server is attacked almost immediately, so hardening has to happen at creation time, not later.
-- Always test a new access method in a second session before closing the first.
-- Verify the **effective** configuration (`sshd -T`), not just the file that was edited.
-- Order matters with firewalls: allow SSH before enabling UFW.
-- Careful path and permission handling (WSL vs Windows paths, `chmod 600`) is a large share of real-world SSH troubleshooting.
 
 ## Future improvements to improve the lynis audit score
 
